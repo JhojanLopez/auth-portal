@@ -1,0 +1,56 @@
+<div class="flex justify-content-center align-items-center h-screen">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <p-card [style]="{'width': '500px'}">
+            <ng-template pTemplate="header">
+                <h2 class="text-center text-4xl font-bold">Registro
+                    <span class="pi pi-user-plus text-3xl ml-2"></span>
+                </h2>
+            </ng-template>
+
+            <!-- Campo Nombre -->
+            <p-floatlabel variant="on">
+                <input class="w-full" pInputText id="name" formControlName="name" autocomplete="off" />
+                <label for="name">Nombre</label>
+            </p-floatlabel>
+            @if (signUpForm.get('name')?.invalid && (signUpForm.get('name')?.dirty || signUpForm.get('name')?.touched)) {
+            <div class="p-error mt-1">
+                @if (signUpForm.get('name')?.errors?.['required']) {
+                <div>
+                    El nombre es requerido.
+                </div>
+                }
+            </div>
+            }
+
+            <p-floatlabel variant="on" class="mt-3">
+                <input class="w-full" pInputText id="email" formControlName="email" autocomplete="off" />
+                <label for="email">Email</label>
+            </p-floatlabel>
+
+            @if (signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)) {
+            <div class="p-error mt-1">
+                @if (signUpForm.get('email')?.errors?.['required']) {
+                <div>
+                    El email es requerido.
+                </div>
+                }
+                @if (signUpForm.get('email')?.errors?.['email']) {
+                <div>
+                    El email no es válido.
+                </div>
+                }
+            </div>
+            }
+            <div class="mt-4 text-right">
+                <p-button routerLink="/login" label="¿Ya tienes cuenta?" [link]="true" />
+            </div>
+
+            <div class="mt-4 text-center">
+                <button pButton type="submit" label="Registrarse" [raised]="true" severity="success"
+                    [disabled]="signUpForm.invalid">
+                    <span class="pi pi-check"></span>
+                </button>
+            </div>
+        </p-card>
+    </form>
+</div>

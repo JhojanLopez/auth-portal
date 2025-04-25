@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "users-portal": {
+    "auth-portal": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/users-portal",
+            "outputPath": "dist/auth-portal",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,6 +27,8 @@
               }
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -50,7 +52,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -59,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "users-portal:build:production"
+              "buildTarget": "auth-portal:build:production"
             },
             "development": {
-              "buildTarget": "users-portal:build:development"
+              "buildTarget": "auth-portal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,6 +93,8 @@
               }
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -92,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
