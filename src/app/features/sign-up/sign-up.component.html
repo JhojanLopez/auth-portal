@@ -1,3 +1,4 @@
+<p-toast position="top-center" [breakpoints]="{ '768px': { width: '100%', right: '0' } }"></p-toast>
 <div class="flex justify-content-center align-items-center h-screen">
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <p-card [style]="{'width': '500px'}">
@@ -12,7 +13,8 @@
                 <input class="w-full" pInputText id="name" formControlName="name" autocomplete="off" />
                 <label for="name">Nombre</label>
             </p-floatlabel>
-            @if (signUpForm.get('name')?.invalid && (signUpForm.get('name')?.dirty || signUpForm.get('name')?.touched)) {
+            @if (signUpForm.get('name')?.invalid && (signUpForm.get('name')?.dirty || signUpForm.get('name')?.touched))
+            {
             <div class="p-error mt-1">
                 @if (signUpForm.get('name')?.errors?.['required']) {
                 <div>
@@ -27,7 +29,8 @@
                 <label for="email">Email</label>
             </p-floatlabel>
 
-            @if (signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)) {
+            @if (signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty ||
+            signUpForm.get('email')?.touched)) {
             <div class="p-error mt-1">
                 @if (signUpForm.get('email')?.errors?.['required']) {
                 <div>
